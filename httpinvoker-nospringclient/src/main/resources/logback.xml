@@ -1,0 +1,140 @@
+<configuration debug="true">
+
+    <property name="ROOT_LEVEL" value="INFO" />
+    <property name="MESSAGE_FILE_PATTERN" value="%d{HH:mm:ss.SSS} | [%thread] %-5level %logger{36} %X{traceId} - %msg%n" />
+    <property name="LoggingDir" value="/opt/applog/blling/httpinvoker" />
+    <property name="maxfilesize" value="100MB"/>
+    <property name="totalsizecap" value="1024GB"/>
+    <property name="maxhistory" value="40"/>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+        <file>${LoggingDir}_debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LoggingDir}_debug.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${maxfilesize}</maxFileSize>
+            <totalSizeCap>${totalsizecap}</totalSizeCap>
+            <maxHistory>${maxhistory}</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${LoggingDir}_info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LoggingDir}_info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${maxfilesize}</maxFileSize>
+            <totalSizeCap>${totalsizecap}</totalSizeCap>
+            <maxHistory>${maxhistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LoggingDir}_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LoggingDir}_error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${maxfilesize}</maxFileSize>
+            <totalSizeCap>${totalsizecap}</totalSizeCap>
+            <maxHistory>${maxhistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${MESSAGE_FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <appender name="ASYNC_INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="INFO"/>
+    </appender>
+
+    <appender name="ASYNC_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="ERROR"/>
+    </appender>
+
+    <appender name="ASYNC_DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="DEBUG"/>
+    </appender>
+
+
+    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+        <Marker>org.domain.library</Marker>
+        <OnMatch>ACCEPT</OnMatch>
+    </turboFilter>
+    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+        <Marker>org.apache.http</Marker>
+        <OnMatch>DENY</OnMatch>
+    </turboFilter>
+    <turboFilter class="ch.qos.logback.classic.turbo.MDCFilter">
+        <MDCKey>username</MDCKey>
+        <Value>sebastien</Value>
+        <OnMatch>ACCEPT</OnMatch>
+    </turboFilter>
+
+
+    <logger name="org.springframework" level="INFO">
+    </logger>
+
+    <logger name="com.amazonaws" level="INFO">
+    </logger>
+
+    <logger name="org.apache.http" level="INFO">
+    </logger>
+
+    <logger name="org.apache.commons.configuration" level="INFO">
+    </logger>
+
+    <logger name="freemarker" level="INFO">
+    </logger>
+
+    <logger name="io.netty" level="INFO">
+    </logger>
+
+    <logger name="org.jooby" level="INFO">
+    </logger>
+
+
+    <root level="${ROOT_LEVEL}">
+        <appender-ref ref="ASYNC_STDOUT"/>
+        <appender-ref ref="ASYNC_INFO"/>
+        <appender-ref ref="ASYNC_ERROR"/>
+        <appender-ref ref="ASYNC_DEBUG"/>
+    </root>
+</configuration>

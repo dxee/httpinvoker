@@ -1,8 +1,5 @@
 package org.blling.httpinvoker.client;
 
-import org.springframework.remoting.support.RemoteInvocation;
-import org.springframework.remoting.support.RemoteInvocationResult;
-
 /**
 * Add your comments here
 * @author blling@

@@ -8,26 +8,13 @@ import org.blling.httpinvoker.client.*;
 import org.blling.httpinvoker.server.service.IAnimalService;
 import org.blling.httpinvoker.server.service.IUserService;
 
+/**
+* Add your comments here
+* @author blling@
+* 2017-09-18
+**/
 public class ClientInvokerConfig {
-
-    public IUserService userService(HttpInvokerProxy httpInvokerProxy) {
-        return httpInvokerProxy.proxyHttpInvoker(IUserService.class);
-    }
-
-    public IAnimalService animalService(HttpInvokerProxy httpInvokerProxy) {
-        return httpInvokerProxy.proxyHttpInvoker(IAnimalService.class);
-    }
-
-    public HttpInvokerProxy userServiceHttpInvokerProxy(HttpInvokerConfig httpInvokerConfig
-            , HttpInvokerExecutor httpInvokerExecutor) {
-        return new HttpInvokerProxy(httpInvokerConfig, httpInvokerExecutor);
-    }
-
-    public HttpInvokerProxy animalHttpInvokerProxy(HttpInvokerConfig httpInvokerConfig
-            , HttpInvokerExecutor httpInvokerExecutor) {
-        return new HttpInvokerProxy(httpInvokerConfig, httpInvokerExecutor);
-    }
-
+    
     public HttpInvokerConfig anamalHttpInvokerConfig(){
         return new HttpInvokerConfig() {
             @Override

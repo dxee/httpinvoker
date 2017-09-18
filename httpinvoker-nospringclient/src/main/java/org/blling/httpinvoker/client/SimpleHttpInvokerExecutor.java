@@ -8,9 +8,6 @@ import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
-import org.springframework.remoting.support.RemoteInvocation;
-import org.springframework.remoting.support.RemoteInvocationResult;
-
 
 /**
 * Add your comments here
@@ -58,7 +55,7 @@ public class SimpleHttpInvokerExecutor implements HttpInvokerExecutor {
 
     protected HttpEntity remoteInvocationEntity(RemoteInvocation invocation) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(SERIALIZED_INVOCATION_BYTE_ARRAY_INITIAL_SIZE);
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ObjectOutputStream oos = new RemoteParamsSerializer(baos);
         try {
             oos.writeObject(invocation);
             ByteArrayEntity byteArrayEntity = new ByteArrayEntity(baos.toByteArray());
@@ -71,7 +68,7 @@ public class SimpleHttpInvokerExecutor implements HttpInvokerExecutor {
 
     protected RemoteInvocationResult readRemoteInvocationResult(InputStream is)
             throws IOException, ClassNotFoundException {
-        ObjectInputStream ois = new ObjectInputStream(is);
+        ObjectInputStream ois = new RemoteResultDeserializer(is);
         try {
             Object obj = ois.readObject();
             if (obj instanceof RemoteInvocationResult) {

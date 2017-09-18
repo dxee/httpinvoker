@@ -19,24 +19,25 @@ public class HttpInvokerProxyTest {
     @Test
     public void testInvoke() throws Exception {
         ClientInvokerConfig clientInvokerConfig = new ClientInvokerConfig();
-        // HttpInvokerConfig
-        HttpInvokerConfig httpInvokerConfig = clientInvokerConfig.anamalHttpInvokerConfig();
 
         // HttpInvokerExcutor
         HttpInvokerExecutor httpInvokerExecutor = new SimpleHttpInvokerExecutor(new HttpClientHolder());
 
-        // HttpInvokerProxy
-        HttpInvokerProxy httpInvokerProxy = clientInvokerConfig.animalHttpInvokerProxy(
-                clientInvokerConfig.anamalHttpInvokerConfig()
-                , httpInvokerExecutor);
+        // HttpInvokerProxyHolder
+        HttpInvokerProxyHolder httpInvokerProxyHolder = new HttpInvokerProxyHolder();
 
-        IAnimalService animalService = clientInvokerConfig.animalService(httpInvokerProxy);
+        // AnamalHttpInvokerConfig
+        HttpInvokerConfig anamalHttpInvokerConfig = clientInvokerConfig.anamalHttpInvokerConfig();
+        IAnimalService animalService = httpInvokerProxyHolder.proxyHttpInvoker(anamalHttpInvokerConfig
+                , httpInvokerExecutor
+                , IAnimalService.class);
         Assert.assertEquals(animalService.getAnimal(1L).getName(), "JAMES");
 
-        httpInvokerProxy = clientInvokerConfig.userServiceHttpInvokerProxy(
-                clientInvokerConfig.userHttpInvokerConfig(),
-                httpInvokerExecutor);
-        IUserService userService = clientInvokerConfig.userService(httpInvokerProxy);
+        // UserHttpInvokerConfig
+        HttpInvokerConfig userHttpInvokerConfig = clientInvokerConfig.userHttpInvokerConfig();
+        IUserService userService = httpInvokerProxyHolder.proxyHttpInvoker(userHttpInvokerConfig
+                , httpInvokerExecutor
+                , IUserService.class);
         Assert.assertEquals(userService.getUserById(2L).getName(), "JJ");
     }
         

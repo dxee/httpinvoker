@@ -1,4 +1,4 @@
-package org.springframework.remoting.support;
+package org.blling.httpinvoker.client;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
