@@ -19,9 +19,7 @@ public class RemoteParamsSerializer extends ObjectOutputStream {
     }
 
     protected void writeClassDescriptor(ObjectStreamClass desc) throws IOException {
-        String prefix = this.getClass().getName();
-        prefix = prefix.substring(0, prefix.lastIndexOf(".")) + ".RemoteInvocation";
-        if (prefix.equalsIgnoreCase(desc.getName())) {
+        if (RemoteInvocation.class.getName().equalsIgnoreCase(desc.getName())) {
             try {
                 Field f = desc.getClass().getDeclaredField("name");
                 f.setAccessible(true);
