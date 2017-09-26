@@ -1,13 +1,10 @@
-package test.org.blling.httpinvoker.client; 
+package org.blling.httpinvoker.client;
 
 import org.blling.httpinvoker.ClientInvokerConfig;
-import org.blling.httpinvoker.client.*;
 import org.blling.httpinvoker.server.service.IAnimalService;
 import org.blling.httpinvoker.server.service.IUserService;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Before; 
-import org.junit.After; 
 
 /**
 * Add your comments here
