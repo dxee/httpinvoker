@@ -11,7 +11,7 @@ public interface HttpInvokerConfig {
      * @return
      */
     String key();
-    String serviceUrl();
+    String url();
     int connectTimeout();
     int socketTimeout();
     int maxTotal();

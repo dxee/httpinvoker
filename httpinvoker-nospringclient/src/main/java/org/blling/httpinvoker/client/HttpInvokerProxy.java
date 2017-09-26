@@ -26,7 +26,7 @@ public class HttpInvokerProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // Do not proxy toString methods, see HttpInvokerClientInterceptor for more details
         if(isToStringMethod(method)) {
-            return "HTTP httpinvoker proxy for service URL [" + this.httpInvokerConfig.serviceUrl() + "]";
+            return "HTTP httpinvoker proxy for service URL [" + this.httpInvokerConfig.url() + "]";
         }
 
         RemoteInvocation invocation = new RemoteInvocation(method, args);

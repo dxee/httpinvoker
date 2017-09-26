@@ -82,7 +82,7 @@ public class SimpleHttpInvokerExecutor implements HttpInvokerExecutor {
     }
 
     protected HttpPost httpPost(HttpInvokerConfig config, RemoteInvocation invocation) throws IOException {
-        HttpPost httpPost = new HttpPost(config.serviceUrl());
+        HttpPost httpPost = new HttpPost(config.url());
 
         // Request config
         RequestConfig.Builder builder = RequestConfig.custom();

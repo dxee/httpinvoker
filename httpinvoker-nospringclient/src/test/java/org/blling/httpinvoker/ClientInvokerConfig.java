@@ -23,7 +23,7 @@ public class ClientInvokerConfig {
             }
 
             @Override
-            public String serviceUrl() {
+            public String url() {
                 return "http://localhost:9999/remote/animalService";
             }
 
@@ -57,7 +57,7 @@ public class ClientInvokerConfig {
             }
 
             @Override
-            public String serviceUrl() {
+            public String url() {
                 return "http://localhost:9999/remote/userService";
             }
 
