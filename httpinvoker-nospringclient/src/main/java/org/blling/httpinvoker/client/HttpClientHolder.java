@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
 * Add your comments here
-* @author blling@
+* @author blling.fan@foxmail.com
 * 2017-09-13
 **/
 public class HttpClientHolder {

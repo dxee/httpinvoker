@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 
 /**
 * Add your comments here
-* @author blling@
+* @author blling.fan@foxmail.com
 * 2017-09-18
 **/
 public class RemoteParamsSerializer extends ObjectOutputStream {

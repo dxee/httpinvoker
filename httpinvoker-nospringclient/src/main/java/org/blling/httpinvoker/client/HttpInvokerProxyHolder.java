@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
 * Add your comments here
-* @author blling@
+* @author blling.fan@foxmail.com
 * 2017-09-18
 **/
 public class HttpInvokerProxyHolder {
@@ -15,7 +15,6 @@ public class HttpInvokerProxyHolder {
     
     /**
     * Add your comments here
-    * @author blling@
     * 2017-09-18
     **/
     public <T> T proxyHttpInvoker(HttpInvokerConfig httpInvokerConfig
@@ -34,7 +33,6 @@ public class HttpInvokerProxyHolder {
 
     /**
     * Add your comments here
-    * @author blling@
     * 2017-09-18
     **/
     private synchronized <T> T initProxyHttpInvoker(HttpInvokerConfig httpInvokerConfig
@@ -56,7 +54,6 @@ public class HttpInvokerProxyHolder {
 
     /**
     * Add your comments here
-    * @author blling@
     * 2017-09-18
     **/
     private String proxyCacheKey(HttpInvokerConfig httpInvokerConfig

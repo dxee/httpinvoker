@@ -8,7 +8,7 @@ import org.junit.Test;
 
 /**
 * Add your comments here
-* @author blling@
+* @author blling.fan@foxmail.com
 * 2017-09-17
 **/
 public class HttpInvokerProxyTest { 

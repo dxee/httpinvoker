@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
 * Add your comments here
-* @author blling@
+* @author blling.fan@foxmail.com
 * 2017-09-11
 **/
 public class RemoteInvocationResult implements Serializable {
