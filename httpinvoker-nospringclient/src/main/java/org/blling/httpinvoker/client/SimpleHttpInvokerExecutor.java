@@ -11,7 +11,7 @@ import org.apache.http.entity.ByteArrayEntity;
 
 /**
 * Add your comments here
-* @author blling.fan@foxmail.com
+* @author blling.fa@foxmail.com
 * 2017-09-12
 **/
 public class SimpleHttpInvokerExecutor implements HttpInvokerExecutor {

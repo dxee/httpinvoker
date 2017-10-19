@@ -14,14 +14,12 @@ import java.util.Map;
 
 /**
 * Add your comments here
-* @author blling.fan@foxmail.com
+* @author blling.fa@foxmail.com
 * 2017-09-13
 **/
 public class HttpClientHolder {
     // HttpClient cache map
     private final Map<String, HttpClient> httpInvokerHttpClientCache = new HashMap<>();
-    // HttpClient instance
-    private static HttpClient hcInstance;
 
     public HttpClient hcInstance(HttpInvokerConfig httpInvokerConfig) {
         HttpClient hcInstance = httpInvokerHttpClientCache.get(httpInvokerConfig.key());

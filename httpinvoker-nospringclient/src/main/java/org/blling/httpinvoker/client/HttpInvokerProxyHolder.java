@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
 * Add your comments here
-* @author blling.fan@foxmail.com
+* @author blling.fa@foxmail.com
 * 2017-09-18
 **/
 public class HttpInvokerProxyHolder {

@@ -2,7 +2,7 @@ package org.blling.httpinvoker.client;
 
 /**
 * Add your comments here
-* @author blling.fan@foxmail.com
+* @author blling.fa@foxmail.com
 * 2017-09-12
 **/
 public interface HttpInvokerConfig {
