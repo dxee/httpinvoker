@@ -41,9 +41,9 @@ public class HttpClientHolder {
                 .build();
 
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(schemeRegistry);
-        // 客户端总并行链接最大数
+        // Max total connections
         connectionManager.setMaxTotal(httpInvokerConfig.maxTotal());
-        // 每个主机的最大并行链接数
+        // Max connections per host
         connectionManager.setDefaultMaxPerRoute(httpInvokerConfig.maxPerRoute());
 
         httpClient = HttpClientBuilder.create().setConnectionManager(connectionManager).build();
